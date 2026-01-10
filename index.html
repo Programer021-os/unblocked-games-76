@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Unblocked Games 76</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0b1020;
+      color: #f5f5f5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      padding: 1rem 1.5rem;
+      background: #131933;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-size: 1.3rem;
+      letter-spacing: 0.05em;
+    }
+
+    header .tagline {
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+
+    main {
+      flex: 1;
+      padding: 1.5rem;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+
+    .game-card {
+      background: #171d3a;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .game-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.6);
+    }
+
+    .game-thumb {
+      position: relative;
+      padding-top: 56.25%;
+      background: #0f1327;
+      overflow: hidden;
+    }
+
+    .game-thumb img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .game-info {
+      padding: 0.75rem 0.9rem 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .game-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .game-meta {
+      font-size: 0.8rem;
+      opacity: 0.75;
+    }
+
+    .game-tag {
+      display: inline-block;
+      margin-top: 0.15rem;
+      padding: 0.15rem 0.4rem;
+      border-radius: 999px;
+      background: rgba(92, 225, 230, 0.15);
+      color: #5ce1e6;
+      font-size: 0.7rem;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal {
+      width: 95%;
+      max-width: 1100px;
+      height: 80vh;
+      background: #050714;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 0.75rem;
+      background: #101630;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.9rem;
+    }
+
+    .modal-title {
+      font-weight: 600;
+    }
+
+    .modal-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .button {
+      border: none;
+      background: #202951;
+      color: #f5f5f5;
+      padding: 0.25rem 0.55rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    .button:hover {
+      background: #283269;
+    }
+
+    .button.danger {
+      background: #b3263a;
+    }
+
+    .button.danger:hover {
+      background: #c93c51;
+    }
+
+    .modal-body {
+      flex: 1;
+      background: #050714;
+    }
+
+    .modal-body iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #000;
+    }
+
+    footer {
+      padding: 0.75rem 1.5rem;
+      font-size: 0.8rem;
+      text-align: center;
+      background: #0a0f22;
+      opacity: 0.75;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+      }
+
+      main {
+        padding: 1rem;
+      }
+
+      .modal {
+        height: 88vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>My HTML Games</h1>
+      <div class="tagline">Click a card to play instantly.</div>
+    </div>
+  </header>
+
+  <main>
+    <h2 class="section-title">All Games</h2>
+    <div class="game-grid" id="gameGrid">
+      <!-- Cards injected by JS -->
+    </div>
+  </main>
+
+  <footer>
+    Hosted HTML, Unity, and emulator games.
+  </footer>
+
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title" id="modalTitle">Game</span>
+        <div class="modal-controls">
+          <button class="button" id="openNewTabBtn">Open in tab</button>
+          <button class="button danger" id="closeModalBtn">Close</button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <iframe id="gameFrame" src=""></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const games = [
+      {
+        title: "Sample Game 1",
+        url: "games/sample1/index.html",
+        thumb: "assets/sample1.png",
+        tag: "Arcade"
+      },
+      {
+        title: "Sample Game 2",
+        url: "games/sample2/index.html",
+        thumb: "assets/sample2.png",
+        tag: "Puzzle"
+      },
+      {
+        title: "ULTRAKILL",
+        url: "games/ultrakill/index.html",
+        thumb: "assets/ultrakill.png",
+        tag: "FPS"
+      },
+      {
+        title: "OvO",
+        url: "games/ovo/index.html",
+        thumb: "assets/ovo.png",
+        tag: "Platformer"
+      },
+      {
+        title: "OvO 2",
+        url: "games/ovo2/index.html",
+        thumb: "assets/ovo2.png",
+        tag: "Platformer"
+      },
+      {
+        title: "Getaway Shootout",
+        url: "games/getaway-shootout/index.html",
+        thumb: "assets/getaway-shootout.png",
+        tag: "Multiplayer"
+      },
+      {
+        title: "Ragdoll Archers",
+        url: "games/ragdoll-archers/index.html",
+        thumb: "assets/ragdoll-archers.png",
+        tag: "Arcade"
+      },
+      {
+        title: "Super Smash Bros (N64)",
+        url: "games/smash64/index.html",
+        thumb: "assets/smash64.png",
+        tag: "Emulator"
+      },
+      {
+        title: "Mario Kart 64",
+        url: "games/mariokart64/index.html",
+        thumb: "assets/mariokart64.png",
+        tag: "Emulator"
+      },
+      {
+        title: "War Knights Arena 3D",
+        url: "games/war-knights-arena/index.html",
+        thumb: "assets/war-knights-arena.png",
+        tag: "Action"
+      }
+    ];
+
+    const gameGrid = document.getElementById("gameGrid");
+    const modalBackdrop = document.getElementById("modalBackdrop");
+    const modalTitle = document.getElementById("modalTitle");
+    const gameFrame = document.getElementById("gameFrame");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+    const openNewTabBtn = document.getElementById("openNewTabBtn");
+
+    let currentGameUrl = null;
+
+    function createGameCard(game) {
+      const card = document.createElement("article");
+      card.className = "game-card";
+
+      const thumb = document.createElement("div");
+      thumb.className = "game-thumb";
+
+      if (game.thumb) {
+        const img = document.createElement("img");
+        img.src = game.thumb;
+        img.alt = game.title;
+        thumb.appendChild(img);
+      }
+
+      const info = document.createElement("div");
+      info.className = "game-info";
+
+      const title = document.createElement("div");
+      title.className = "game-title";
+      title.textContent = game.title;
+
+      const meta = document.createElement("div");
+      meta.className = "game-meta";
+      meta.textContent = game.url;
+
+      info.appendChild(title);
+      info.appendChild(meta);
+
+      if (game.tag) {
+        const tag = document.createElement("span");
+        tag.className = "game-tag";
+        tag.textContent = game.tag;
+        info.appendChild(tag);
+      }
+
+      card.appendChild(thumb);
+      card.appendChild(info);
+
+      card.addEventListener("click", () => openGame(game));
+
+      return card;
+    }
+
+    function openGame(game) {
+      currentGameUrl = game.url;
+      modalTitle.textContent = game.title;
+      gameFrame.src = game.url;
+      modalBackdrop.classList.add("open");
+    }
+
+    function closeModal() {
+      modalBackdrop.classList.remove("open");
+      gameFrame.src = "";
+      currentGameUrl = null;
+    }
+
+    games.forEach(game => {
+      gameGrid.appendChild(createGameCard(game));
+    });
+
+    closeModalBtn.addEventListener("click", closeModal);
+    modalBackdrop.addEventListener("click", (e) => {
+      if (e.target === modalBackdrop) {
+        closeModal();
+      }
+    });
+
+    openNewTabBtn.addEventListener("click", () => {
+      if (currentGameUrl) {
+        window.open(currentGameUrl, "_blank");
+      }
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modalBackdrop.classList.contains("open")) {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>
